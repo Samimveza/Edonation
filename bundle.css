@@ -1536,6 +1536,12 @@ a[class*=card]:hover .title {
     .site-preloader svg {
         width: 117px;
     }
+
+.btn-return-to-main {
+    margin-top: 5px;
+    width: 125px;
+    float: right;
+}
 .mobile-block {
   display: none;
 }
