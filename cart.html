@@ -1,0 +1,206 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap UI kit - Create e-commerce website with html uikit</title>
+    <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
+    <meta name="description" content="ui library for front-end developers to create online shor templates">
+    <meta name="keywords" content="ui kit, ecommerce templates, website, e-commerce, uikit framework, HTML, CSS, Bootstrap 4">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Bootstrap-ecommerce -->
+    <link rel="preload" href="bundle.css" as="style" />
+    <link rel="preload" href="bundle.min.js" as="script" />
+
+    <link rel="preload" href="scripts/webfonts/fa-solid-900.ttf" as="font" />
+    <link rel="preload" href="scripts/webfonts/fa-solid-900.woff" as="font" />
+    <link rel="preload" href="scripts/webfonts/fa-solid-900.woff2" as="font" />
+
+    <link rel="stylesheet" href="bundle.css" type="text/css" />
+
+</head>
+<body ng-controller="baseController" ng-cloak>
+    <toaster-container></toaster-container>
+    <div ng-if="baseController.isLoadingShown" class="site-preloader">
+        <svg enable-background="new 0 0 100 100" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="4" /><line x1="50" x2="85" y1="50" y2="50.5" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="4"><animateTransform attributeName="transform" dur="2s" from="0 50 50" repeatCount="indefinite" to="360 50 50" type="rotate" /></line><line x1="50" x2="49.5" y1="50" y2="74" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="4"><animateTransform attributeName="transform" dur="15s" from="0 50 50" repeatCount="indefinite" to="360 50 50" type="rotate" /></line></svg>
+    </div>
+    <!-- ========================= SECTION HEADER ========================= -->
+    <header class="main-header fixed-top bg-white" ng-controller="commonHeaderController">
+        <section class="header-main border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-sm-4 col-md-4 col-5">
+                        <a href="/" class="brand-wrap mb-0">
+                            <img class="logo" src="https://1.bp.blogspot.com/-O4X4V-73L_s/XIRwOy6phfI/AAAAAAAAIbM/EaMD7gYw9hsoRcdABOILWyHMbk6Tm2eQACLcBGAs/s1600/Islamic%2BRelief%2BJob%2BVacancy.png">
+                        </a> <!-- brand-wrap.// -->
+                    </div>
+                    <div class="col-lg-4 col-xl-5 col-sm-8 col-md-4 d-none d-md-block">
+                        <!--<form action="#" class="search">
+                            <div class="input-group w-100">
+                                <input type="text" class="form-control" style="width:55%;" placeholder="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>-->
+                        <!-- search-wrap .end// -->
+                    </div>
+                    <!-- col.// -->
+                    <div class="col-lg-5 col-xl-4 col-sm-8 col-md-4 col-7">
+                        <div class="d-flex justify-content-end">
+                            <a href="#" class="widget-header mr-3">
+                                <div class="icon">
+                                    <i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
+                                    <span class="notify">{{headerController.cartItems.length}}</span>
+                                </div>
+                            </a>
+                            <!-- widget-header .// -->
+                        </div>
+                        <!-- widgets-wrap.// -->
+                    </div>
+                    <!-- col.// -->
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- container.// -->
+        </section>
+        <!-- header-main .// -->
+    </header>
+    <!-- ========================= SECTION HEADER END // ========================= -->
+    <section class="section-content bg product-section" ng-controller="orderCartController" ng-init="controller.setInfo()">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <article class="card mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Contact info</h4>
+                            <form name="checkoutForm" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <label>Title*</label>
+                                        <select ng-options="item as item.description for item in controller.preloadedData.titles track by item.idTitle"
+                                                ng-model="controller.screenModeManager.entity.title" placeholder="Select your title" class="form-control"></select>
+
+                                        <!--<select name="" >
+                                            <option value="">Tashkent</option>
+                                        </select>-->
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label>First name</label>
+                                        <input type="text" class="form-control" ng-model="controller.screenModeManager.entity.firstName"
+                                               name="firstName" id="firstName" placeholder="Type your first name">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label>Last name</label>
+                                        <input type="text" class="form-control" name="lastName" id="lastName" ng-model="controller.screenModeManager.entity.lastName"
+                                               placeholder="Type your last name">
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Address/Street</label>
+                                        <input type="text" class="form-control" ng-model="controller.screenModeManager.entity.address"
+                                               placeholder="Type your street address">
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" name="city" id="city" placeholder="Type your city" ng-model="controller.screenModeManager.entity.city">
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Phone</label>
+                                        <input type="text" class="form-control" name="phone" id="phone"
+                                               placeholder="Type your phone" ng-model="controller.screenModeManager.entity.phoneNumber">
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Type your email"
+                                               ng-model="controller.screenModeManager.entity.email">
+                                    </div>
+                                </div>
+                                <!-- row.// -->
+                            </form>
+                        </div>
+                        <!-- card-body.// -->
+                    </article>
+                    <article class="accordion" id="accordion_pay">
+                        <div class="card" ng-repeat="paymentMethod in controller.preloadedData.paymentMethods">
+                            <header class="card-header">
+                                <label class="form-check collapsed" data-toggle="collapse" data-target="#accordion-pay-{{$index}}" aria-expanded="false">
+                                    <input class="form-check-input" name="payment-option" ng-checked="$index == 0" type="radio" value="option-{{$index}}">
+                                    <h6 class="form-check-label">
+                                        {{paymentMethod.bankName}}
+                                    </h6>
+                                </label>
+                            </header>
+                            <div id="accordion-pay-{{$index}}" class="collapse" data-parent="#accordion_pay" style="">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-sm-6" ng-repeat="paymentMethodDetail in paymentMethod.methods">
+                                            <label class="js-check box active">
+                                                <figcaption class="info">
+                                                    <h5 class="title">{{paymentMethodDetail.type}}</h5>
+                                                    <p>
+                                                        {{paymentMethodDetail.details}}
+                                                    </p>
+                                                </figcaption>
+                                            </label> <!-- js-check.// -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- card body .// -->
+                            </div>
+                            <!-- collapse .// -->
+                        </div>
+
+                    </article>
+                </main>
+                <!-- col.// -->
+                <aside class="col-md-3">
+                    <!-- COMPONENTS SIDEBAR -->
+                    <div class="card">
+                        <div class="p-3">
+                            <div class="">
+                                <figure class="itemside mb-3" ng-repeat="cartItem in controller.cartManager.cartItems track by $index">
+                                    <div class="aside">
+                                        <img src="{{cartItem.productPosterUrl}}" class="img-sm border img-fluid">
+                                    </div>
+                                    <figcaption class="info align-self-center">
+                                        <p class="title">{{cartItem.productDescription}}</p>
+                                        <div class="price">Rs {{cartItem.amount | number:0}}</div>
+                                        <!-- price-wrap.// -->
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="price-wrap text-center py-3 border-top">Subtotal: <strong class="h5 price">Rs {{controller.cartTotal | number : 0}}</strong></div>
+                            <hr>
+                            <p class="small mb-3 text-muted">By clicking you are agree with terms of condition </p>
+                            <a href="#" class="btn btn-primary btn-block" ng-click="controller.screenModeManager.save()"> Order  </a>
+                        </div>
+                    </div>
+                    <!-- card.// -->
+                    <!-- COMPONENTS SIDEBAR END .// -->
+                </aside>
+            </div>
+        </div>
+        <!-- container .//  -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="section-footer border-top">
+        <div class="container">
+            <p class="text-center mt-3">
+                <img data-src="https://1.bp.blogspot.com/-O4X4V-73L_s/XIRwOy6phfI/AAAAAAAAIbM/EaMD7gYw9hsoRcdABOILWyHMbk6Tm2eQACLcBGAs/s1600/Islamic%2BRelief%2BJob%2BVacancy.png" height="38">
+            </p>
+        </div>
+        <!-- //container -->
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
+    <script>
+        var globalBaseServerUrl = "https://islamicrelief.mosociete.com/";
+        var cdnUrl = 'https://cdn.edonation.mu:96/';
+    </script>
+    <script src="bundle.min.js"></script>
+
+</body>
+</html>

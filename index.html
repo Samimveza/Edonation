@@ -1,0 +1,179 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap UI kit - Create e-commerce website with html uikit</title>
+    <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
+    <meta name="description" content="ui library for front-end developers to create online shor templates">
+    <meta name="keywords" content="ui kit, ecommerce templates, website, e-commerce, uikit framework, HTML, CSS, Bootstrap 4">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Bootstrap-ecommerce -->
+    <link rel="preload" href="bundle.css" as="style" />
+    <link rel="preload" href="bundle.min.js" as="script" />
+
+    <link rel="preload" href="scripts/webfonts/fa-solid-900.ttf" as="font" />
+    <link rel="preload" href="scripts/webfonts/fa-solid-900.woff" as="font" />
+    <link rel="preload" href="scripts/webfonts/fa-solid-900.woff2" as="font" />
+
+    <link rel="stylesheet" href="bundle.css" type="text/css" />
+
+</head>
+<body ng-controller="baseController" ng-cloak>
+    <toaster-container></toaster-container>
+    <div ng-if="baseController.isLoadingShown" class="site-preloader">
+        <svg enable-background="new 0 0 100 100" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="4" /><line x1="50" x2="85" y1="50" y2="50.5" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="4"><animateTransform attributeName="transform" dur="2s" from="0 50 50" repeatCount="indefinite" to="360 50 50" type="rotate" /></line><line x1="50" x2="49.5" y1="50" y2="74" fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="4"><animateTransform attributeName="transform" dur="15s" from="0 50 50" repeatCount="indefinite" to="360 50 50" type="rotate" /></line></svg>
+    </div>
+    <!-- ========================= SECTION HEADER ========================= -->
+    <header class="main-header fixed-top bg-white" ng-controller="commonHeaderController">
+        <section class="header-main border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-sm-4 col-md-4 col-5">
+                        <a href="/" class="brand-wrap mb-0">
+                            <img class="logo" src="https://1.bp.blogspot.com/-O4X4V-73L_s/XIRwOy6phfI/AAAAAAAAIbM/EaMD7gYw9hsoRcdABOILWyHMbk6Tm2eQACLcBGAs/s1600/Islamic%2BRelief%2BJob%2BVacancy.png">
+                        </a> <!-- brand-wrap.// -->
+                    </div>
+                    <div class="col-lg-4 col-xl-5 col-sm-8 col-md-4 d-none d-md-block">
+                        <form class="search">
+                            <div class="input-group w-100">
+                                <input type="text" class="form-control" style="width:55%;" placeholder="Search" ng-model="headerController.sharedItem.searchData">
+                            </div>
+                        </form>
+                        <!-- search-wrap .end// -->
+                    </div>
+                    <!-- col.// -->
+                    <div class="col-lg-5 col-xl-4 col-sm-8 col-md-4 col-7">
+                        <div class="d-flex justify-content-end">
+                            <a href="#" class="widget-header mr-3">
+                                <div class="icon">
+                                    <i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
+                                    <span class="notify">{{headerController.cartItems.length}}</span>
+                                </div>
+                            </a>
+                            <!-- widget-header .// -->
+                        </div>
+                        <!-- widgets-wrap.// -->
+                    </div>
+                    <!-- col.// -->
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- container.// -->
+        </section>
+        <!-- header-main .// -->
+    </header>
+    <!-- ========================= SECTION HEADER END // ========================= -->
+    <section class="section-content bg product-section" ng-controller="orderOrderController" ng-init="controller.setInfo()">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4 col-6" ng-repeat="product in controller.donationProductViewModel | filter:{productDescription : controller.headerSharedItem.searchData}">
+                            <figure class="card card-product-grid">
+                                <a href="#" class="img-wrap">
+                                    <img src="{{product.posterUrl}}" alt="{{product.productDescription}}">
+                                </a>
+                                <figcaption class="info-wrap">
+                                    <a href="#" class="title">{{product.productDescription}}</a>
+                                    <div class="mt-2">
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" placeholder="Type donation amount"
+                                                   ng-model="product.amount" ng-change="controller.onProductAmountChanged(product)">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-danger" type="button" ng-click="controller.removeProductFromCart(product)"
+                                                        data-toggle="tooltip" title="" data-original-title="Remove from cart" ng-if="controller.isProductInCart(product)">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- action-wrap.end -->
+                                </figcaption>
+                            </figure>
+                            <!-- card // -->
+                        </div>
+                        <!-- col.// -->
+                    </div>
+                </main>
+                <!-- col.// -->
+                <aside class="col-md-3 d-none d-sm-block">
+                    <!-- COMPONENTS SIDEBAR -->
+                    <div class="card sidebar-item">
+                        <div class="p-3">
+                            <div class="cart-item">
+                                <figure class="cart-no-item" ng-if="controller.cartItems.length == 0">
+                                    <img class="img-fluid"
+                                         src="{{controller.baseController.globalVariableFactory.cdnUrl}}/images/not-found-alt.svg" alt="no product found">
+                                    <p>No products in the cart.</p>
+                                </figure>
+
+                                <figure class="itemside mb-3" ng-repeat="cartItem in controller.cartItems">
+                                    <div class="aside m-auto">
+                                        <img src="{{cartItem.productPosterUrl}}" class="img-sm border img-fluid">
+                                    </div>
+                                    <figcaption class="info align-self-center">
+                                        <p class="title">{{cartItem.productDescription}}</p>
+                                        <div class="price">Rs {{cartItem.amount | number:0}}</div>
+                                        <!-- price-wrap.// -->
+                                    </figcaption>
+                                    <a href="#" class="float-right m-auto cart-remove" ng-click="controller.removeItemFromCart(cartItem)"><i class="fa fa-times"></i></a>
+                                </figure>
+                            </div>
+                            <div class="price-wrap text-center py-3 border-top">Subtotal: <strong class="h5 price">Rs {{controller.cartTotal | number:0}}</strong></div>
+                            <a href="#" class="btn btn-primary btn-block" ng-click="controller.checkout()"> Checkout </a>
+                        </div>
+                    </div>
+                    <!-- card.// -->
+                    <!-- COMPONENTS SIDEBAR END .// -->
+                </aside>
+            </div>
+            <!-- row.// -->
+            <div class="dropdown hmkNrQ d-block d-md-none">
+                <a href="#" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Checkout
+                </a>
+                <div class="dropdown-menu p-3 dropdown-menu-right" style="min-width:250px;" x-placement="top-end">
+                    <div class="cart-item">
+                        <figure class="cart-no-item" ng-if="controller.cartItems.length == 0">
+                            <p>No products in the cart.</p>
+                        </figure>
+                        <figure class="itemside mb-3" ng-repeat="cartItem in controller.cartItems">
+                            <div class="aside m-auto">
+                                <img src="{{cartItem.productPosterUrl}}" class="img-sm border img-fluid">
+                            </div>
+                            <figcaption class="info align-self-center">
+                                <p class="title">{{cartItem.productDescription}}</p>
+                                <div class="price">Rs {{cartItem.amount | number:0}}</div>
+                                <!-- price-wrap.// -->
+                            </figcaption>
+                            <a href="#" class="float-right m-auto cart-remove" ng-click="controller.removeItemFromCart(cartItem)"><i class="fa fa-times"></i></a>
+                        </figure>
+                    </div>
+                    <div class="price-wrap text-center py-3 border-top">Subtotal: <strong class="h5 price">Rs {{cartItem.cartTotal  | number:0}}</strong></div>
+                    <a href="#" class="btn btn-primary btn-block" ng-click="controller.checkout()"> Confirm Checkout </a>
+                </div>
+            </div>
+        </div>
+        <!-- container .//  -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="section-footer border-top">
+        <div class="container">
+            <p class="text-center mt-3">
+                <img data-src="https://1.bp.blogspot.com/-O4X4V-73L_s/XIRwOy6phfI/AAAAAAAAIbM/EaMD7gYw9hsoRcdABOILWyHMbk6Tm2eQACLcBGAs/s1600/Islamic%2BRelief%2BJob%2BVacancy.png" height="38">
+            </p>
+        </div>
+        <!-- //container -->
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
+    <script>
+        var globalBaseServerUrl = "https://islamicrelief.mosociete.com/";
+        var cdnUrl = 'https://cdn.edonation.mu:96/';
+    </script>
+    <script src="bundle.min.js"></script>
+
+</body>
+</html>
