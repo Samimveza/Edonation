@@ -79,8 +79,8 @@
                                     <a href="#" class="title">{{product.productDescription}}</a>
                                     <div class="mt-2">
                                         <div class="input-group">
-                                            <input type="number" class="form-control" placeholder="Type donation amount"
-                                                   ng-model="product.amount" ng-change="controller.onProductAmountChanged(product)">
+                                            <input type="text" class="form-control" placeholder="Type donation amount"
+                                                   numeric ng-model="product.amount" ng-change="controller.onProductAmountChanged(product)">
                                             <div class="input-group-append">
                                                 <button class="btn btn-danger" type="button" ng-click="controller.removeProductFromCart(product)"
                                                         data-toggle="tooltip" title="" data-original-title="Remove from cart" ng-if="controller.isProductInCart(product)">
