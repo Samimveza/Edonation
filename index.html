@@ -118,7 +118,7 @@
                                         <div class="price">Rs {{cartItem.amount | number:0}}</div>
                                         <!-- price-wrap.// -->
                                     </figcaption>
-                                    <a href="#" class="float-right m-auto cart-remove" ng-click="controller.removeItemFromCart(cartItem)"><i class="fa fa-times"></i></a>
+                                    <a href="#" class="btn btn-danger btn-sm float-right m-auto cart-remove" ng-click="controller.removeItemFromCart(cartItem)"><i class="fa fa-times"></i></a>
                                 </figure>
                             </div>
                             <div class="price-wrap text-center py-3 border-top">Subtotal: <strong class="h5 price">Rs {{controller.cartTotal | number:0}}</strong></div>
@@ -148,7 +148,7 @@
                                 <div class="price">Rs {{cartItem.amount | number:0}}</div>
                                 <!-- price-wrap.// -->
                             </figcaption>
-                            <a href="#" class="float-right m-auto cart-remove" ng-click="controller.removeItemFromCart(cartItem)"><i class="fa fa-times"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm float-right m-auto cart-remove" ng-click="controller.removeItemFromCart(cartItem)"><i class="fa fa-times"></i></a>
                         </figure>
                     </div>
                     <div class="price-wrap text-center py-3 border-top">Subtotal: <strong class="h5 price">Rs {{controller.cartTotal  | number:0}}</strong></div>
@@ -172,7 +172,7 @@
     <script>
         var globalBaseServerUrl = "https://islamic-relief-edonation-api.mosociete.com/";
         var cdnUrl = 'https://islamic-relief-edonation-cdn.mosociete.com/';
-        var siteUrl = 'https://samimveza.github.io/samimvez.github.io/';
+		var siteUrl = 'https://samimveza.github.io/samimvez.github.io/';
 
         //var globalBaseServerUrl = "https://api.edonation.mu/";
         //var cdnUrl = 'https://cdn.edonation.mu/';
