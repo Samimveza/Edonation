@@ -151,7 +151,7 @@
                             <a href="#" class="float-right m-auto cart-remove" ng-click="controller.removeItemFromCart(cartItem)"><i class="fa fa-times"></i></a>
                         </figure>
                     </div>
-                    <div class="price-wrap text-center py-3 border-top">Subtotal: <strong class="h5 price">Rs {{cartItem.cartTotal  | number:0}}</strong></div>
+                    <div class="price-wrap text-center py-3 border-top">Subtotal: <strong class="h5 price">Rs {{controller.cartTotal  | number:0}}</strong></div>
                     <a href="#" class="btn btn-primary btn-block" ng-click="controller.checkout()"> Confirm Checkout </a>
                 </div>
             </div>
